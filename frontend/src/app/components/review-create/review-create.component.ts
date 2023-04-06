@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 
 @Component({
@@ -7,5 +7,8 @@ import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
   styleUrls: ['./review-create.component.scss']
 })
 export class ReviewCreateComponent {
+
   constructor(public modalRef: MdbModalRef<ReviewCreateComponent>) {}
+
 }
+
