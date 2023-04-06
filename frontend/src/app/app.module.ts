@@ -25,6 +25,9 @@ import { BookCardComponent } from './components/book-card/book-card.component';
 import { ReviewCreateComponent } from './components/review-create/review-create.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { BookListComponent } from './components/book-list/book-list.component';
+import { BookSearchComponent } from './components/book-search/book-search.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DescriptionPipe } from './pipes/description.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import { BookListComponent } from './components/book-list/book-list.component';
     ReviewCreateComponent,
     NavBarComponent,
     BookListComponent,
+    BookSearchComponent,
+    DescriptionPipe,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +57,8 @@ import { BookListComponent } from './components/book-list/book-list.component';
     MdbTabsModule,
     MdbTooltipModule,
     MdbValidationModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

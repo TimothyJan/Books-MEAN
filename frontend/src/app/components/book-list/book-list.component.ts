@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { log } from 'console';
 
 @Component({
   selector: 'app-book-list',
