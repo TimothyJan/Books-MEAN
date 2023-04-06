@@ -23,12 +23,14 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { ReviewCreateComponent } from './components/review-create/review-create.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookCardComponent,
     ReviewCreateComponent,
+    NavBarComponent,
   ],
   imports: [
     BrowserModule,
