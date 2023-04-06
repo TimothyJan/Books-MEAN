@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ReviewCreateComponent } from '../review-create/review-create.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
-import { log } from 'console';
 
 @Component({
   selector: 'app-book-card',
@@ -11,11 +10,6 @@ import { log } from 'console';
 export class BookCardComponent implements OnInit {
   modalRef: MdbModalRef<ReviewCreateComponent> | null = null;
 
-  // @Input() authors = "";
-  // @Input() description = "";
-  // @Input() googleLink = "";
-  // @Input() imageLink = "";
-  // @Input() title = "";
   @Input() googleId = "";
   authors = "";
   description = "";
@@ -51,8 +45,9 @@ export class BookCardComponent implements OnInit {
     );
     const data = await response.json();
     this.authors = data.volumeInfo.authors;
-    this.description = data.volumeInfo.description
-    this.title = data.volumeInfo.title
+    this.description = (data.volumeInfo.description);
+    this.googleLink = data.volumeInfo.canonicalVolumeLink;
+    this.title = data.volumeInfo.title;
 
     thumbnailLink = data.volumeInfo.imageLinks;
     if(thumbnailLink) {

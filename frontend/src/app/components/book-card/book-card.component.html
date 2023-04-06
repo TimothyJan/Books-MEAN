@@ -4,9 +4,12 @@
     <img class="thumbnail" src={{imageLink}} alt="cover">
   </a>
   <div class="book-info">
-    <h3 class="book-title">{{title}}</h3>
+    <h3
+      class="book-title">
+      {{title}}
+    </h3>
     <div class="book-authors">{{authors}}</div>
-    <p>{{description  | slice:0:30}}</p>
+    <p>{{description  | slice:0:30 | description}}...</p>
     <button
       *ngIf="!review"
       class="btn btn-primary"
