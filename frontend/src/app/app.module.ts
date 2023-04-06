@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BookCardComponent } from './components/book-card/book-card.component';
 import { ReviewCreateComponent } from './components/review-create/review-create.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { BookListComponent } from './components/book-list/book-list.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     BookCardComponent,
     ReviewCreateComponent,
     NavBarComponent,
+    BookListComponent,
   ],
   imports: [
     BrowserModule,

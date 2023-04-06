@@ -1,1 +1,21 @@
-<button class="btn btn-primary" (click)="openModal()">Open modal</button>
+
+<div class="book" [ngStyle]="setStyle()">
+  <a href={{googleLink}} target="_blank">
+    <img class="thumbnail" src={{imageLink}} alt="cover">
+  </a>
+  <div class="book-info">
+    <h3 class="book-title">{{title}}</h3>
+    <div class="book-authors">{{authors}}</div>
+    <p>{{description  | slice:0:30}}</p>
+    <button
+      *ngIf="!review"
+      class="btn btn-primary"
+      (click)="openModal()"
+      >
+      Review
+    </button>
+    <div *ngIf="review">
+      Your Rating: {{rating}}/5
+    </div>
+  </div>
+</div>
