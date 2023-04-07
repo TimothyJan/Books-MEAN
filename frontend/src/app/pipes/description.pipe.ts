@@ -10,7 +10,8 @@ export class DescriptionPipe implements PipeTransform {
       .replaceAll('<b>', '').replaceAll('</b>', '')
       .replaceAll('<br>', '').replaceAll('</br>', '')
       .replaceAll('<i>', '').replaceAll('</i>', '')
-      .replaceAll('<p>', '').replaceAll('</p>', '');
+      .replaceAll('<p>', '').replaceAll('</p>', '')
+      .trim();
     return newVal
   }
 
