@@ -19,18 +19,6 @@ export class BookCardComponent implements OnInit {
   rating = 5;
   review = "";
 
-  config = {
-    animation: true,
-    backdrop: true,
-    containerClass: 'right',
-    data: {
-      title: 'Custom title'
-    },
-    ignoreBackdropClick: false,
-    keyboard: true,
-    modalClass: 'modal-top-right'
-  }
-
   constructor(private modalService: MdbModalService) {}
 
   ngOnInit() {
@@ -70,6 +58,8 @@ export class BookCardComponent implements OnInit {
   }
 
   openModal() {
-    this.modalRef = this.modalService.open(ReviewCreateComponent, this.config);
+    this.modalRef = this.modalService.open(ReviewCreateComponent, {
+      data: {googleId: this.googleId}
+    });
   }
 }
