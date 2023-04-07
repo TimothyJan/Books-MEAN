@@ -7,9 +7,10 @@ export class DescriptionPipe implements PipeTransform {
 
   transform(value: string): string {
     let newVal = value
-      .replace('<p>', '').replace('</p>', '')
-      .replace('<b>', '').replace('</b>', '')
-      .replace('<i>', '').replace('</i>', '');
+      .replaceAll('<b>', '').replaceAll('</b>', '')
+      .replaceAll('<br>', '').replaceAll('</br>', '')
+      .replaceAll('<i>', '').replaceAll('</i>', '')
+      .replaceAll('<p>', '').replaceAll('</p>', '');
     return newVal
   }
 
