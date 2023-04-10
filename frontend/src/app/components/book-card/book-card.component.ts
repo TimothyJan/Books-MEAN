@@ -10,14 +10,14 @@ import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 export class BookCardComponent implements OnInit {
   modalRef: MdbModalRef<ReviewCreateComponent> | null = null;
 
-  @Input() googleId = "";
+  @Input() googleId: string;
+  @Input() rating?: string;
+  @Input() review?: string;
   authors = "";
   description = "";
   googleLink = "";
   imageLink = "";
   title = "";
-  rating = 5;
-  review = "";
 
   constructor(private modalService: MdbModalService) {}
 

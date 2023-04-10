@@ -1,5 +1,5 @@
 <article>
-  <section id="search" class="results">
+  <section id="book-list" class="results">
     <div class="flex">
       <h1 class="section-title">{{query}}</h1>
       <div>
@@ -22,48 +22,13 @@
       </div>
     </div>
 
-    <!-- <div class="list-book">
-      <div class="prompt">
-        <div *ngFor="let book of books">
-          <div *ngIf="book.volumeInfo.imageLinks; else noImageLinkBlock">
-            <app-book-card
-              [authors]="book.volumeInfo.authors"
-              [description]="book.volumeInfo.description"
-              [googleLink]="book.volumeInfo.canonicalVolumeLink"
-              [imageLink]="book.volumeInfo.imageLinks.smallThumbnail"
-              [title]="book.volumeInfo.title"
-            >
-            </app-book-card>
-          </div>
-          <ng-template #noImageLinkBlock>
-            <app-book-card
-              [authors]="book.volumeInfo.authors"
-              [description]="book.volumeInfo.description"
-              [googleLink]="book.volumeInfo.canonicalVolumeLink"
-              [imageLink]="'https://books.google.com/googlebooks/images/no_cover_thumb.gif'"
-              [title]="book.volumeInfo.title"
-            >
-            </app-book-card>
-          </ng-template>
-        </div>
-      </div>
-    </div> -->
-
     <div class="list-book">
       <div class="prompt">
         <div *ngFor="let book of books">
-          <div *ngIf="book.volumeInfo.imageLinks; else noImageLinkBlock">
             <app-book-card
               [googleId]="book.id"
             >
             </app-book-card>
-          </div>
-          <ng-template #noImageLinkBlock>
-            <app-book-card
-              [googleId]="book.id"
-            >
-            </app-book-card>
-          </ng-template>
         </div>
       </div>
     </div>

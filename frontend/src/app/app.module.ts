@@ -32,6 +32,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { DescriptionPipe } from './pipes/description.pipe';
+import { ReviewListComponent } from './components/review-list/review-list.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { DescriptionPipe } from './pipes/description.pipe';
     BookListComponent,
     BookSearchComponent,
     DescriptionPipe,
+    ReviewListComponent,
   ],
   imports: [
     BrowserModule,

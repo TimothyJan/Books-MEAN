@@ -32,7 +32,7 @@ export class ReviewCreateComponent implements OnInit{
     this.mainForm();
     this.reviewForm.patchValue({
       googleId: this.googleId
-    })
+    });
   }
 
   mainForm() {
