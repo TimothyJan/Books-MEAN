@@ -25,17 +25,20 @@ export class ReviewCreateComponent implements OnInit{
     private mongodbApiService: MongodbApiService,
     public fb: FormBuilder,
   ) {
-    this.mainForm();
   }
 
   ngOnInit(): void {
     this.getBookDetails();
+    this.mainForm();
+    this.reviewForm.patchValue({
+      googleId: this.googleId
+    })
   }
 
   mainForm() {
     this.reviewForm = this.fb.group({
       googleId: ['', [Validators.required]],
-      // rating: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
+      rating: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
       review: ['', [Validators.required]]
     });
   }
@@ -71,9 +74,6 @@ export class ReviewCreateComponent implements OnInit{
 
   onSubmit() {
     // Set GoogleId
-    this.reviewForm.patchValue({
-      googleId: this.googleId
-    })
     console.log(this.reviewForm.value);
 
     this.submitted = true;
