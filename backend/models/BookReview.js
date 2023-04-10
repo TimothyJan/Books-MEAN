@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema
 let BookReview = new Schema({
-  googleID : {
+  googleId : {
     type: String
   },
   rating: {
