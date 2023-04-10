@@ -20,29 +20,97 @@
       </button>
     </div>
 
-    <div class="modal-body">
-      <!-- Description -->
-      <div *ngIf="shortDescription; else longDescBlock">
-        {{description | slice:0:232 | description}}...
-        <span>
-          <a class="info" (click)="onDescriptionSizeChange()">more</a>
-        </span>
+    <!-- Form -->
+    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+      <div class="modal-body">
+        <!-- Description -->
+        <div *ngIf="shortDescription; else longDescBlock">
+          {{description | slice:0:232 | description}}...
+          <span>
+            <a class="info" (click)="onDescriptionSizeChange()">more</a>
+          </span>
+        </div>
+        <ng-template #longDescBlock>
+          {{description | description}}
+          <span>
+            <a class="info" (click)="onDescriptionSizeChange()">less</a>
+          </span>
+        </ng-template>
+
+        <!-- Rating -->
+        <!-- <div class="form-group">
+          <label for="labelRating">Rating</label>
+          <input
+            class="form-control"
+            type="number"
+            formControlName="rating"
+            min="0"
+            max="10"
+          />
+          <div
+            class="invalid-feedback"
+            *ngIf="submitted && myForm['rating'].errors?.['required']"
+          >
+            Enter a rating.
+          </div>
+          <div
+            class="invalid-feedback"
+            *ngIf="submitted && myForm['rating'].errors?.['max']"
+          >
+            Enter Numbers Between 0 and 10.
+          </div>
+          <div
+            class="invalid-feedback"
+            *ngIf="submitted && myForm['rating'].errors?.['min']"
+          >
+            Enter Numbers Between 0 and 10.
+          </div>
+        </div> -->
+
+        <!-- Review -->
+        <div class="form-group">
+          <label for="review">Review</label>
+          <input class="form-control" type="text" formControlName="review" />
+          <!-- <div *ngIf="myForm['review'].invalid && (myForm['review'].dirty || myForm['review'].touched)" class="invalid-feedback">
+            <div *ngIf="myForm['review'].errors?.['required']">
+              Review is required.
+            </div>
+          </div> -->
+          <!-- <div
+            class="invalid-feedback"
+            *ngIf="submitted && myForm['review'].errors?.['required']"
+          >
+            Enter a review.
+          </div> -->
+          <div [hidden]="myForm['review'].errors.required">
+            Review is required.
+          </div>
+        </div>
+
       </div>
-      <ng-template #longDescBlock>
-        {{description | description}}
-        <span>
-          <a class="info" (click)="onDescriptionSizeChange()">less</a>
-        </span>
-      </ng-template>
 
-      <!-- Form -->
-
-    </div>
-
-    <div class="modal-footer">
-      <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="modalRef.close()" mdbWavesEffect>Close</button>
-      <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save!</button>
-    </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          mdbBtn
+          color="secondary"
+          class="btn btn-secondary"
+          aria-label="Close"
+          (click)="modalRef.close()"
+          mdbWavesEffect>
+          Close
+        </button>
+        <button
+          type="button"
+          mdbBtn
+          color="primary"
+          class="btn btn-primary"
+          mdbWavesEffect
+          type="submit">
+          Save!
+        </button>
+      </div>
+    </form>
 
   </div>
 </div>

@@ -26,8 +26,13 @@ import { ReviewCreateComponent } from './components/review-create/review-create.
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { BookSearchComponent } from './components/book-search/book-search.component';
+
+import { MongodbApiService } from './service/mongodb-api.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { DescriptionPipe } from './pipes/description.pipe';
+
 
 @NgModule({
   declarations: [
@@ -58,9 +63,10 @@ import { DescriptionPipe } from './pipes/description.pipe';
     MdbTooltipModule,
     MdbValidationModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MongodbApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

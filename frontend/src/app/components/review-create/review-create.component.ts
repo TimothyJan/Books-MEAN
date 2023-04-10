@@ -1,6 +1,6 @@
-import { Component, Input, OnInit, NgZone } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
-import { Router } from '@angular/router';
+import { MongodbApiService } from 'src/app/service/mongodb-api.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class ReviewCreateComponent implements OnInit{
   googleId: string | null = null;;
-
   authors = "";
   description = "";
   googleLink = "";
@@ -18,16 +17,27 @@ export class ReviewCreateComponent implements OnInit{
   title = "";
 
   shortDescription = true;
+  submitted = false;
+  reviewForm: FormGroup;
 
   constructor(
     public modalRef: MdbModalRef<ReviewCreateComponent>,
+    private mongodbApiService: MongodbApiService,
     public fb: FormBuilder,
-    private router: Router,
-    private ngZone: NgZone
-  ) {}
+  ) {
+    this.mainForm();
+  }
 
   ngOnInit(): void {
     this.getBookDetails();
+  }
+
+  mainForm() {
+    this.reviewForm = this.fb.group({
+      googleId: ['', [Validators.required]],
+      // rating: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
+      review: ['', [Validators.required]]
+    });
   }
 
   async getBookDetails() {
@@ -52,6 +62,35 @@ export class ReviewCreateComponent implements OnInit{
 
   onDescriptionSizeChange(): void {
     this.shortDescription = !this.shortDescription;
+  }
+
+  get myForm() {
+    // Getter to access form control
+    return this.reviewForm.controls;
+  }
+
+  onSubmit() {
+    // Set GoogleId
+    this.reviewForm.patchValue({
+      googleId: this.googleId
+    })
+    console.log(this.reviewForm.value);
+
+    this.submitted = true;
+    if (!this.reviewForm.valid) {
+      console.log("reviewForm failed");
+      return false;
+    } else {
+      console.log("reviewForm success");
+      return this.mongodbApiService.createReview(this.reviewForm.value).subscribe({
+        complete: () => {
+          console.log('Review successfully created!')
+        },
+        error: (e) => {
+          console.log(e);
+        },
+      });
+    }
   }
 }
 
