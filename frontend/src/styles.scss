@@ -26,7 +26,8 @@
   box-sizing: border-box;
   outline: 0;
   border: 0;
-  font-family: Montserrat, "Roboto", "Noto", sans-serif;
+  // font-family: Montserrat, "Roboto", "Noto", sans-serif;
+  font-family: 'Work Sans', sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -471,6 +472,7 @@ article {
 .modal-title {
   padding-left: 5%;
   padding-right: 2.5%;
+  font-weight: bold;
 }
 
 .fixed {
@@ -530,8 +532,4 @@ article {
     max-width: $modal-lg;
     margin: $modal-dialog-margin-y-sm-up auto;
   }
-}
-
-.invalid-feedback {
-  color: red;
 }
