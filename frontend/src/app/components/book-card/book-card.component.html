@@ -10,7 +10,7 @@
       {{title}}
     </h3>
 
-    <p class="card-text">{{description  | slice:0:30 | description}}</p>
+    <p class="card-text">{{description | description | slice:0:50 }}...</p>
 
     <div *ngIf="!review; else reviewBlock">
       <button
