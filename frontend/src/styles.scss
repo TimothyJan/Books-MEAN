@@ -356,9 +356,10 @@ article {
 .book {
   display: flex;
   margin: 16px;
-  padding: 32px;
+  padding: 16px;
   border-radius: 32px;
   flex: 1;
+  width: 18rem;
 }
 
 .categories {
@@ -401,6 +402,7 @@ article {
   font-weight: 900;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  padding-top: 16px;
 }
 
 .book-authors {
@@ -532,4 +534,13 @@ article {
     max-width: $modal-lg;
     margin: $modal-dialog-margin-y-sm-up auto;
   }
+}
+
+.card-text {
+  margin-bottom: 16px;
+}
+
+.edit-delete-btn {
+  margin-left: 8px;
+  margin-right: 8px;
 }

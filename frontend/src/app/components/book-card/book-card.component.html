@@ -1,58 +1,50 @@
 
-<!-- <div class="book" [ngStyle]="setStyle()">
-
-  <a href={{googleLink}}>
-    <img class="thumbnail" src={{imageLink}} alt="cover">
-  </a>
-
-  <div class="book-info">
-    <h3
-      class="book-title">
-      {{title}}
-    </h3>
-    <div class="book-authors">{{authors}}</div>
-    <p>{{description  | slice:0:30 | description}}...</p>
-    <button
-      *ngIf="!review"
-      class="btn btn-primary"
-      (click)="openModal()"
-      >
-      Review
-    </button>
-  </div>
-</div> -->
-
 <div class="book" [ngStyle]="setStyle()">
+  <div class="card-body">
+    <a href={{googleLink}}>
+      <img class="thumbnail" src={{imageLink}} alt="cover">
+    </a>
 
-  <a href={{googleLink}}>
-    <img class="thumbnail" src={{imageLink}} alt="cover">
-  </a>
-
-  <div class="book-info">
     <h3
       class="book-title">
       {{title}}
     </h3>
-    <div class="book-authors">{{authors}}</div>
-    <p>{{description  | slice:0:30 | description}}...</p>
-  </div>
 
+    <p class="card-text">{{description  | slice:0:30 | description}}</p>
+
+    <div *ngIf="!review; else reviewBlock">
+      <button
+        class="btn btn-primary"
+        (click)="openModal()">
+        Review
+      </button>
+    </div>
+
+    <ng-template #reviewBlock>
+      <div class="card-text">
+        <div>
+          Your Rating: {{rating}}/10
+        </div>
+        <div>
+          Your Review: {{review}}
+        </div>
+      </div>
+
+      <!-- <div class="d-flex align-items-center justify-content-around mb-4"> -->
+      <button
+        class="btn btn-primary edit-delete-btn">
+        Edit
+      </button>
+      <button
+        class="btn btn-danger edit-delete-btn"
+        (click)="onDelete()">
+        Delete
+      </button>
+    </ng-template>
+
+  </div>
 </div>
 
-<!-- Review -->
-<div>
-  <div *ngIf="review">
-  <div>
-    Your Rating: {{rating}}/10
-  </div>
-  <div>
-    Your Review: {{review}}
-  </div>
-</div>
 
-<button>
-  Edit
-</button>
-<button>
-  Delete
-</button>
+
+

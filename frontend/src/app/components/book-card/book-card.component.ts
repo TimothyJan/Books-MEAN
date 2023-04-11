@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ReviewCreateComponent } from '../review-create/review-create.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { MongodbApiService } from 'src/app/service/mongodb-api.service';
 
 @Component({
   selector: 'app-book-card',
@@ -13,13 +14,17 @@ export class BookCardComponent implements OnInit {
   @Input() googleId: string;
   @Input() rating?: string;
   @Input() review?: string;
+  @Input() review_id?: string;
   authors = "";
   description = "";
   googleLink = "";
   imageLink = "";
   title = "";
 
-  constructor(private modalService: MdbModalService) {}
+  constructor(
+    private modalService: MdbModalService,
+    private _mongodbApiService:MongodbApiService
+    ) {}
 
   ngOnInit() {
     this.getBookDetails();
@@ -61,5 +66,10 @@ export class BookCardComponent implements OnInit {
     this.modalRef = this.modalService.open(ReviewCreateComponent, {
       data: {googleId: this.googleId}
     });
+  }
+
+  onDelete() {
+    console.log(this.review_id);
+    this._mongodbApiService.deleteReview(this.review_id).subscribe();
   }
 }
