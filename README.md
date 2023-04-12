@@ -1,5 +1,5 @@
 # Books-MEAN
-Book management system - Angular MEAN CRUD app using Google Books API, MongoDB, Express.js, Angular, Node.js, MDBootstrap 5.
+Book management system - Angular MEAN CRUD app using Google Books API, MongoDB, Express, Angular, Node, and MDBootstrap 5.
 
 Frontend:
 <ul>
