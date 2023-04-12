@@ -17,10 +17,7 @@ export class ReviewListComponent implements OnInit{
 
   readReviews(){
     this._mongodbApiService.getReviews().subscribe((data) => {
-     this.reviews = data;
-     console.log(data);
+      this.reviews = data;
     })
-    // console.log(this.Reviews);
-
   }
 }

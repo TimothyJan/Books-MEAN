@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MdbModalRef } from 'mdb-angular-ui-kit/modal';
 import { MongodbApiService } from 'src/app/service/mongodb-api.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-review-create',
-  templateUrl: './review-create.component.html',
-  styleUrls: ['./review-create.component.scss']
+  selector: 'app-review-edit',
+  templateUrl: './review-edit.component.html',
+  styleUrls: ['./review-edit.component.scss']
 })
-export class ReviewCreateComponent implements OnInit{
-  googleId: string | null = null;;
+export class ReviewEditComponent implements OnInit{
+  review_id: string | null = null;
+  googleId: string | null = null;
+
   authors = "";
   description = "";
   googleLink = "";
@@ -17,24 +19,22 @@ export class ReviewCreateComponent implements OnInit{
   title = "";
 
   shortDescription = true;
+  submitted = false;
   reviewForm: FormGroup;
 
   constructor(
-    public modalRef: MdbModalRef<ReviewCreateComponent>,
+    public modalRef: MdbModalRef<ReviewEditComponent>,
     private mongodbApiService: MongodbApiService,
     public fb: FormBuilder,
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getBookDetails();
-    this.mainForm();
-    this.reviewForm.patchValue({
-      googleId: this.googleId
-    });
+    this.getReview();
+    this.editForm();
   }
 
-  mainForm() {
+  editForm() {
     this.reviewForm = this.fb.group({
       googleId: ['', [Validators.required]],
       rating: [0, [Validators.required, Validators.min(0), Validators.max(10)]],
@@ -49,6 +49,7 @@ export class ReviewCreateComponent implements OnInit{
       `https://www.googleapis.com/books/v1/volumes/${this.googleId}`
     );
     const data = await response.json();
+
     this.authors = data.volumeInfo.authors;
     this.description = (data.volumeInfo.description);
     this.googleLink = data.volumeInfo.canonicalVolumeLink;
@@ -71,18 +72,28 @@ export class ReviewCreateComponent implements OnInit{
     return this.reviewForm.controls;
   }
 
+  getReview() {
+    this.mongodbApiService.getReview(this.review_id).subscribe((data) => {
+      this.reviewForm.setValue({
+        googleId: data['googleId'],
+        rating: data['rating'],
+        review: data['review']
+      });
+    });
+  }
+
   onSubmit() {
-    // Set GoogleId
     console.log(this.reviewForm.value);
 
+    this.submitted = true;
     if (!this.reviewForm.valid) {
       console.log("reviewForm failed");
       return false;
     } else {
       console.log("reviewForm success");
-      return this.mongodbApiService.createReview(this.reviewForm.value).subscribe({
+      return this.mongodbApiService.updateReview(this.review_id, this.reviewForm.value).subscribe({
         complete: () => {
-          console.log('Review successfully created!')
+          console.log('Review updated created!')
         },
         error: (e) => {
           console.log(e);
@@ -90,5 +101,5 @@ export class ReviewCreateComponent implements OnInit{
       });
     }
   }
-}
 
+}
