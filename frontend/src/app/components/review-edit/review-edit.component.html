@@ -90,6 +90,7 @@
           class="btn btn-primary"
           mdbWavesEffect
           [disabled]="!reviewForm.valid"
+          (click)="modalRef.close()"
           type="submit">
           Update!
         </button>
