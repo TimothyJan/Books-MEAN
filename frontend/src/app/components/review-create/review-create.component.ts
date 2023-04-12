@@ -21,7 +21,7 @@ export class ReviewCreateComponent implements OnInit{
 
   constructor(
     public modalRef: MdbModalRef<ReviewCreateComponent>,
-    private mongodbApiService: MongodbApiService,
+    private _mongodbApiService: MongodbApiService,
     public fb: FormBuilder,
   ) {
   }
@@ -80,9 +80,10 @@ export class ReviewCreateComponent implements OnInit{
       return false;
     } else {
       console.log("reviewForm success");
-      return this.mongodbApiService.createReview(this.reviewForm.value).subscribe({
+      return this._mongodbApiService.createReview(this.reviewForm.value).subscribe({
         complete: () => {
-          console.log('Review successfully created!')
+          this._mongodbApiService.reviewsChanged.next(this.googleId);
+          console.log('Review successfully created!');
         },
         error: (e) => {
           console.log(e);

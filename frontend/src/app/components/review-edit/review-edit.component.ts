@@ -24,7 +24,7 @@ export class ReviewEditComponent implements OnInit{
 
   constructor(
     public modalRef: MdbModalRef<ReviewEditComponent>,
-    private mongodbApiService: MongodbApiService,
+    private _mongodbApiService: MongodbApiService,
     public fb: FormBuilder,
   ) {}
 
@@ -73,7 +73,7 @@ export class ReviewEditComponent implements OnInit{
   }
 
   getReview() {
-    this.mongodbApiService.getReview(this.review_id).subscribe((data) => {
+    this._mongodbApiService.getReview(this.review_id).subscribe((data) => {
       this.reviewForm.setValue({
         googleId: data['googleId'],
         rating: data['rating'],
@@ -91,8 +91,9 @@ export class ReviewEditComponent implements OnInit{
       return false;
     } else {
       console.log("reviewForm success");
-      return this.mongodbApiService.updateReview(this.review_id, this.reviewForm.value).subscribe({
+      return this._mongodbApiService.updateReview(this.review_id, this.reviewForm.value).subscribe({
         complete: () => {
+          this._mongodbApiService.reviewsChanged.next(this.googleId);
           console.log('Review updated created!')
         },
         error: (e) => {

@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { MongodbApiService } from 'src/app/service/mongodb-api.service';
 
 @Component({
@@ -6,13 +6,15 @@ import { MongodbApiService } from 'src/app/service/mongodb-api.service';
   templateUrl: './review-list.component.html',
   styleUrls: ['./review-list.component.scss']
 })
-export class ReviewListComponent implements OnInit{
+export class ReviewListComponent{
   reviews:any = [];
+  reviewsChanged: string;
 
-  constructor(private _mongodbApiService:MongodbApiService) {}
-
-  ngOnInit() {
-    this.readReviews();
+  constructor(private _mongodbApiService:MongodbApiService) {
+    this._mongodbApiService.reviewsChanged.subscribe(value => {
+      this.reviewsChanged = value ;
+      this.readReviews();
+    });
   }
 
   readReviews(){
