@@ -33,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { DescriptionPipe } from './pipes/description.pipe';
 import { ReviewListComponent } from './components/review-list/review-list.component';
+import { ReviewEditComponent } from './components/review-edit/review-edit.component';
 
 
 @NgModule({
@@ -45,6 +46,7 @@ import { ReviewListComponent } from './components/review-list/review-list.compon
     BookSearchComponent,
     DescriptionPipe,
     ReviewListComponent,
+    ReviewEditComponent,
   ],
   imports: [
     BrowserModule,
