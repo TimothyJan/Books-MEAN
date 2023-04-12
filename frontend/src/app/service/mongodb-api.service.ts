@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {
   HttpClient,
@@ -11,6 +11,7 @@ import {
   providedIn: 'root'
 })
 export class MongodbApiService {
+  public reviewsChanged: BehaviorSubject<string> = new BehaviorSubject<string>("None");
 
   baseUri: string = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
