@@ -81,6 +81,14 @@ html {
   scroll-behavior: smooth;
 }
 
+html body {
+  background: url(assets/images/background.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -126,6 +134,7 @@ aside {
   overflow: auto;
   padding: 32px;
   width: 20%;
+  max-width: 350px;
   height: 100%;
   background-color: var(--bg-color);
   font-size: 14px;
@@ -543,4 +552,10 @@ article {
 .edit-delete-btn {
   margin-left: 8px;
   margin-right: 8px;
+}
+
+.github {
+  align-items: center;
+  font-size: small;
+  margin-top: auto;
 }
