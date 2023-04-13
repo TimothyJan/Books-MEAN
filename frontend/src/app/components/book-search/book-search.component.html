@@ -7,6 +7,7 @@
         placeholder="Search books by name, author, genre and etc ..."
         aria-label="Search books"
         [(ngModel)]="query"
+        (input)="searchBooks()"
       />
       <button
         id="search"

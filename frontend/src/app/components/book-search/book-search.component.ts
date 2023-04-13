@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './book-search.component.html',
   styleUrls: ['./book-search.component.scss']
 })
-export class BookSearchComponent {
+export class BookSearchComponent{
   query = "";
   startIndex = 0;
   books:any;
