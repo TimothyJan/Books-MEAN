@@ -55,7 +55,7 @@ bookReviewRoute.route('/update/:id').put((req, res, next) => {
 
 // Delete bookReview
 bookReviewRoute.route('/delete/:id').delete((req, res, next) => {
-  BookReview.findOneAndRemove(req.params.id, (error, data) => {
+  BookReview.findOneAndRemove({_id: req.params.id}, (error, data) => {
     if (error) {
       return next(error);
     } else {
