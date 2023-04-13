@@ -15,6 +15,9 @@ Frontend:
   <li><a href="https://mdbootstrap.com/docs/standard/getting-started/installation/">Mdbootstrap Installation</a></li>
 </ul>
 
+<h3>Some of my fav books</h3>
+<img src="screenshots/0-Mine.png" alt="Home" width="200%" height="200%">
+
 <h3>Home</h3>
 <img src="screenshots/1-Home.png" alt="Home" width="200%" height="200%">
 
@@ -23,3 +26,9 @@ Frontend:
 
 <h3>Review</h3>
 <img src="screenshots/3-Review.png" alt="Review" width="200%" height="200%">
+
+<h3>Review-List</h3>
+<img src="screenshots/4-ReviewList.png" alt="Review" width="200%" height="200%">
+
+<h3>Explore Other Genres!</h3>
+<img src="screenshots/5-Sections.png" alt="Review" width="200%" height="200%">
