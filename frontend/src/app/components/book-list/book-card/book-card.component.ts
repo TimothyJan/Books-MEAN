@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ReviewCreateComponent } from '../review-create/review-create.component';
+import { ReviewCreateComponent } from '../../review-create/review-create.component';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
 import { MongodbApiService } from 'src/app/service/mongodb-api.service';
-import { ReviewEditComponent } from '../review-edit/review-edit.component';
+import { ReviewEditComponent } from '../../review-edit/review-edit.component';
 
 @Component({
   selector: 'app-book-card',
